@@ -287,6 +287,12 @@ class User extends CI_Controller {
 //        $this->load->view('user/edit_user', $data);
         echo json_encode($data);
     }
+    
+    function profile($id) {
+        $data['user'] = $this->user_model->getUser($id);
+//        $this->load->view('user/edit_user', $data);
+        echo json_encode($data);
+    }
 
     function delete($id) {
         if (is_numeric($id)) {
@@ -322,7 +328,7 @@ class User extends CI_Controller {
         if (!empty($_FILES['file']['name'])) {
             // File upload settings
             $config['upload_path'] = './upload/';
-            $config['allowed_types'] = 'gif|jpg|png|pdf|jpeg';
+            $config['allowed_types'] = 'gif|jpg|png|pdf|jpeg|heic|mov';
             $config['max_size'] = 10000;
 
             $this->load->library('upload', $config);
